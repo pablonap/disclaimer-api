@@ -2,10 +2,16 @@ package com.fivvy.disclaimerapi.repository;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
 import com.fivvy.disclaimerapi.model.Disclaimer;
 import org.springframework.stereotype.Repository;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public class DisclaimerDynamoDbRepository implements DisclaimerRepository {
@@ -21,8 +27,8 @@ public class DisclaimerDynamoDbRepository implements DisclaimerRepository {
     }
 
     @Override
-    public Disclaimer getById(String disclaimerId) {
-        return dynamoDBMapper.load(Disclaimer.class, disclaimerId);
+    public Optional<Disclaimer> findById(String disclaimerId) {
+        return Optional.of(dynamoDBMapper.load(Disclaimer.class, disclaimerId));
     }
 
     @Override
@@ -39,5 +45,22 @@ public class DisclaimerDynamoDbRepository implements DisclaimerRepository {
                                 new ExpectedAttributeValue(
                                         new AttributeValue().withS(disclaimerId)
                                 )));
+    }
+
+    @Override
+    public List<Disclaimer> findAllByText(String text) {
+        Map<String, AttributeValue> eav = Map.of(":val1", new AttributeValue().withS(text));
+        DynamoDBScanExpression expression = new DynamoDBScanExpression()
+                .withFilterExpression("contains(#attrName, :val1)")
+                .withExpressionAttributeValues(eav)
+                .withExpressionAttributeNames(Collections.singletonMap("#attrName", "text"));
+
+        return dynamoDBMapper.scan(Disclaimer.class, expression);
+    }
+
+    @Override
+    public List<Disclaimer> findAll() {
+        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
+        return dynamoDBMapper.scan(Disclaimer.class, scanExpression);
     }
 }

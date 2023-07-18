@@ -16,6 +16,9 @@ public class DisclaimerRequestDto {
     @NotBlank
     private String version;
 
+    public DisclaimerRequestDto() {
+    }
+
     public String getName() {
         return name;
     }

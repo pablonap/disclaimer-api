@@ -4,7 +4,10 @@ import com.fivvy.disclaimerapi.dto.DisclaimerRequestDto;
 import com.fivvy.disclaimerapi.dto.DisclaimerResponseDto;
 import com.fivvy.disclaimerapi.service.DisclaimerService;
 import com.fivvy.disclaimerapi.service.IDisclaimerService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/disclaimers")
@@ -16,7 +19,7 @@ public class DisclaimerController {
     }
 
     @PostMapping
-    public void save(@RequestBody DisclaimerRequestDto request) {
+    public void save(@Valid @RequestBody DisclaimerRequestDto request) {
         disclaimerService.save(request);
     }
 
@@ -33,7 +36,12 @@ public class DisclaimerController {
     @PutMapping("{disclaimerId}")
     public void update(
             @PathVariable("disclaimerId") String disclaimerId,
-            @RequestBody DisclaimerRequestDto request) {
+            @Valid @RequestBody DisclaimerRequestDto request) {
         disclaimerService.update(disclaimerId, request);
+    }
+
+    @GetMapping
+    public List<DisclaimerResponseDto> findAll(@RequestParam(value="text", required = false) String text) {
+        return disclaimerService.findAll(text);
     }
 }
