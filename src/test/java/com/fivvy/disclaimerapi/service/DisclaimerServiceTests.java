@@ -115,6 +115,7 @@ public class DisclaimerServiceTests {
         assertThat(capturedDisclaimer.getName()).isEqualTo(dto.getName());
         assertThat(capturedDisclaimer.getText()).isEqualTo(dto.getText());
         assertThat(capturedDisclaimer.getVersion()).isEqualTo(dto.getVersion());
+        assertThat(capturedDisclaimer.getCreateAt()).isNotNull();
     }
 
     @Test
@@ -218,7 +219,6 @@ public class DisclaimerServiceTests {
     @Test
     void itShouldReturnAListWithElementsForFindAllWithEmptyText() {
         // given
-        final String TEXT_FROM_REQUEST = "";
         Disclaimer disclaimerFromDb1 = DisclaimerUtils.disclaimerFromDbOf();
         Disclaimer disclaimerFromDb2 = DisclaimerUtils.disclaimerFromDbOf();
 

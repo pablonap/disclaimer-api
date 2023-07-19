@@ -5,7 +5,6 @@ import com.fivvy.disclaimerapi.dto.AcceptanceResponseDto;
 import com.fivvy.disclaimerapi.exception.ExceptionMessages;
 import com.fivvy.disclaimerapi.exception.ResourceNotFoundException;
 import com.fivvy.disclaimerapi.model.Acceptance;
-import com.fivvy.disclaimerapi.model.Disclaimer;
 import com.fivvy.disclaimerapi.repository.AcceptanceRepository;
 import com.fivvy.disclaimerapi.repository.DisclaimerRepository;
 import com.fivvy.disclaimerapi.utils.Utils;
