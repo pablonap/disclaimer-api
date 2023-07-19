@@ -1,4 +1,4 @@
-package com.fivvy.disclaimerapi.service.utils;
+package com.fivvy.disclaimerapi.utils;
 
 import com.fivvy.disclaimerapi.dto.AcceptanceRequestDto;
 import com.fivvy.disclaimerapi.dto.AcceptanceResponseDto;
@@ -15,6 +15,14 @@ public final class AcceptanceUtils {
         return dto;
     }
 
+    public static AcceptanceResponseDto acceptanceResponseDtoOf() {
+        AcceptanceResponseDto dto = new AcceptanceResponseDto();
+        dto.setDisclaimerId("id1");
+        dto.setUserId("user1");
+        dto.setCreateAt("2023-07-19 12:00:00");
+
+        return dto;
+    }
 
     public static Acceptance mappedAcceptanceFromRequestOf() {
         Acceptance acceptance = new Acceptance();

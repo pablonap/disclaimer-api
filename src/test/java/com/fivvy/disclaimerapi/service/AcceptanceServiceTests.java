@@ -2,16 +2,13 @@ package com.fivvy.disclaimerapi.service;
 
 import com.fivvy.disclaimerapi.dto.AcceptanceRequestDto;
 import com.fivvy.disclaimerapi.dto.AcceptanceResponseDto;
-import com.fivvy.disclaimerapi.dto.DisclaimerRequestDto;
-import com.fivvy.disclaimerapi.dto.DisclaimerResponseDto;
-import com.fivvy.disclaimerapi.exception.RequestValidationException;
 import com.fivvy.disclaimerapi.exception.ResourceNotFoundException;
 import com.fivvy.disclaimerapi.model.Acceptance;
 import com.fivvy.disclaimerapi.model.Disclaimer;
 import com.fivvy.disclaimerapi.repository.AcceptanceRepository;
 import com.fivvy.disclaimerapi.repository.DisclaimerRepository;
-import com.fivvy.disclaimerapi.service.utils.AcceptanceUtils;
-import com.fivvy.disclaimerapi.service.utils.DisclaimerUtils;
+import com.fivvy.disclaimerapi.utils.AcceptanceUtils;
+import com.fivvy.disclaimerapi.utils.DisclaimerUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;

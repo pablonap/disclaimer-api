@@ -1,4 +1,4 @@
-package com.fivvy.disclaimerapi.service.utils;
+package com.fivvy.disclaimerapi.utils;
 
 import com.fivvy.disclaimerapi.dto.DisclaimerRequestDto;
 import com.fivvy.disclaimerapi.dto.DisclaimerResponseDto;
@@ -22,6 +22,7 @@ public final class DisclaimerUtils {
         dto.setName("luca prodan");
         dto.setText("disc 1");
         dto.setVersion("1.0");
+        dto.setCreateAt("2023-07-19 12:00:00");
 
         return dto;
     }

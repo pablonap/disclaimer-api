@@ -6,7 +6,7 @@ import com.fivvy.disclaimerapi.exception.RequestValidationException;
 import com.fivvy.disclaimerapi.exception.ResourceNotFoundException;
 import com.fivvy.disclaimerapi.model.Disclaimer;
 import com.fivvy.disclaimerapi.repository.DisclaimerRepository;
-import com.fivvy.disclaimerapi.service.utils.DisclaimerUtils;
+import com.fivvy.disclaimerapi.utils.DisclaimerUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -15,8 +15,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
